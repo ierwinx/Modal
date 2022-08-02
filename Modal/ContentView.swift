@@ -1,16 +1,22 @@
-//
-//  ContentView.swift
-//  Modal
-//
-//  Created by Erwin Luz León on 01/08/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var bShow = false
+    
     var body: some View {
-        Text("Hello, world!")
+        VStack {
+            Button("Mostrar") {
+                self.bShow.toggle()
+            }
             .padding()
+            .padding([.leading, .trailing], 40)
+            .background(.red)
+            .foregroundColor(.white)
+            .sheet(isPresented: $bShow) {
+                VistaModal()
+            }
+        }
     }
 }
 
